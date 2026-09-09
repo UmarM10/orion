@@ -46,6 +46,7 @@ if __name__ == "__main__":
     audio_stream.close()
 
 def listen():
+    # Blocking function
     # On successful trigger, return confidence percentage as a float.
     while True:
         try:
