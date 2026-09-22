@@ -3,3 +3,4 @@ pyaudio
 sounddevice
 numpy
 groq
+silero-vad
