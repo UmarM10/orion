@@ -1,4 +1,5 @@
 import pyaudio
+import sounddevice as sd
 
 """
 
