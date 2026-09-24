@@ -4,11 +4,13 @@ Speech to text. Records audio and locally text used by Groq.
 
 """
 
+import sys
+import time
+
 import groq
 import numpy as np
 import pyaudio
 import torch
-import time
 from silero_vad import VADIterator, load_silero_vad
 
 from audio import microphone_stream as mic
@@ -57,7 +59,7 @@ def record(debug=False):
                     break
         except KeyboardInterrupt:
             print(" Interrupted: Exiting...")
-            break
+            sys.exit(0)
     return b"".join(recorded_frames)
 
 

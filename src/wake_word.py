@@ -5,6 +5,7 @@ This script processes the wake word using openwakeword and starts text to speech
 
 """
 
+import sys
 import time
 import warnings
 from decimal import Decimal
@@ -34,19 +35,19 @@ def listen(debug=False):
             raw_frame = mic.read(num_frames=1280)
             frame = numpy.frombuffer(raw_frame, dtype=numpy.int16)
             prediction = model.predict(frame)
-            if prediction["hey_orion"] >= numpy.float32(0.5):
+            if prediction["hey_orion"] >= numpy.float32(0.5):  # pyright: ignore[reportCallIssue, reportArgumentType]
                 model.reset()
                 if debug:
                     print(
-                        f"Wake word triggered with {round(Decimal(str(prediction['hey_orion'])), 2)}% confidence."
+                        f"Wake word triggered with {round(Decimal(str(prediction['hey_orion'])), 2)}% confidence."  # pyright: ignore[reportArgumentType, reportCallIssue]
                     )
                 break
         except KeyboardInterrupt:
             print(" Interrupted: Exiting...")
-            return None
+            sys.exit(0)
 
     if prediction:
-        return round(Decimal(str(prediction["hey_orion"])), 2) * 100
+        return round(Decimal(str(prediction["hey_orion"])), 2) * 100  # pyright: ignore[reportCallIssue, reportArgumentType]
 
 
 # Test script - runs only if executed directly.
