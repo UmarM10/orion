@@ -44,7 +44,7 @@ def record(debug=False):
                 if "start" in result:
                     if debug:
                         print("Speech resumed." if has_spoken else "Speech started.")
-                    has_spoken = True,
+                    has_spoken = True
                     silence_start_time = None
 
                 elif "end" in result:
